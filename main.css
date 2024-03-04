@@ -1,41 +1,56 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    overflow-x: hidden;
-    background-color: #020202;
+  overflow-x: hidden;
+  background-color: #020202;
 }
-
 
 .mouse {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Images */
 .mouse--imgs img {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    max-width: 40vh;
-    width: 100%;
-    height: auto;
-    /* opacity: 0; */
-    /* transform: scale(0); */
-    transition: opacity 0.2s, transform 0.2s;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  max-width: 40vh;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .mouse--imgs img[data-status="visible"] {
-    /* display: block; */
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
 
 .mouse--imgs img[data-status="hidden"] {
-    opacity: 0;
-    transform: scale(0);
-    /* display: none; */
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* Emojis */
+.mouse--emojis .emoji {
+  position: absolute;
+  display: inline-block;
+  animation-name: jump;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  font-size: 18px;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateX(0) translateY(0) scale(0.5);
+}
+100% {
+    transform: translateX(var(--x)) translateY(var(--y)) scale(1);
+}
 }
